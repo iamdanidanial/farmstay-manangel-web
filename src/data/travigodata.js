@@ -52,7 +52,7 @@ export const brands = [
 ];
 
 export const navlinks = [
-  { link: "Home", id: "home" },
+  { link: "Home", id: "/" },
   { link: "About", id: "about" },
   { link: "Experience", id: "experience" },
   { link: "Our Guest", id: "guest" },

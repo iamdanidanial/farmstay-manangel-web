@@ -14,7 +14,7 @@ const PopupMenu = ({ navlinks, popupState }) => {
         <ul className="flex items-start flex-col gap-3">
           {navlinks?.map((val, i) => (
             <li key={i}>
-              <NavLink to={`#`}>{val.link}</NavLink>
+              <NavLink to={val.id}>{val.link}</NavLink>
             </li>
           ))}
           <li>
@@ -22,7 +22,7 @@ const PopupMenu = ({ navlinks, popupState }) => {
               type="button"
               className="button-light sm:w-auto shadow-slate-300 rounded-lg"
             >
-              Join Us
+              What's Up
             </button>
           </li>
         </ul>
