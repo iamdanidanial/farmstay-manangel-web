@@ -44,11 +44,11 @@ export const brands = [
     link: "https://www.booking.com/hotel/id/farmstay-mananggel-kabupaten-cianjur1.id.html",
     iconSrc: brand3,
   },
-  { link: "https://www.workaway.info/en/host/381591867438", iconSrc: brand4 },
-  {
-    link: "https://www.tripadvisor.com/Hotel_Review-g1006216-d25421193-Reviews-Farmstay_Manangel-Cianjur_West_Java_Java.html",
-    iconSrc: brand5,
-  },
+  // { link: "https://www.workaway.info/en/host/381591867438", iconSrc: brand4 },
+  // {
+  //   link: "https://www.tripadvisor.com/Hotel_Review-g1006216-d25421193-Reviews-Farmstay_Manangel-Cianjur_West_Java_Java.html",
+  //   iconSrc: brand5,
+  // },
 ];
 
 export const navlinks = [
