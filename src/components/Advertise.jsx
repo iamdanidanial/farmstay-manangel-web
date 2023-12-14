@@ -12,7 +12,7 @@ const Advertise = ({ brands }) => {
           <p className="text-xl lg:text-sm text-gray-900"></p>
         </div>
       </div>
-      <div className="my-16 lg:my-7 w-9/12 lg:w-[85vw] m-auto flex items-center lg:flex-wrap justify-between xl:gap-7 overflow-x-scroll scroll-smooth scroll-hidden">
+      <div className="my-16 lg:my-7 w-9/12 lg:w-[85vw] m-auto flex items-center lg:flex-wrap justify-center xl:gap-7 overflow-x-scroll scroll-smooth scroll-hidden">
         {brands?.map((val, i) => (
           <Link
             key={val.link}
