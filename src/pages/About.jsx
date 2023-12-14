@@ -27,7 +27,7 @@ export const About = () => {
     {
       id: 3,
       title: "Care for Livestock",
-      description: "Milk cows, collect eggs, and tend to animals.",
+      description: "Collect Vegetables, Fruits and Fish",
       image: care,
     },
     {
@@ -66,7 +66,7 @@ export const About = () => {
       <div className="flex flex-col bg-gradient-to-b from-emerald-200 to-white h-auto w-auto">
         <div className="travigo-container">
           <div className="grid items-center place-items-center text-center mt-36 mb-12 md:mt-28 md:mb-6">
-            <h1 className="text-7xl font-bold lg:text-6xl md:text-5xl sm:text-4xl xsm:text-3xl text-black filter drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-green-700 to-purple-800 p-2">
+            <h1 className="text-7xl font-bold lg:text-6xl md:text-5xl sm:text-4xl xsm:text-3xl text-black filter drop-shadow-lg bg-clip-text text-transparent  bg-orange-700 p-2">
               Welcome! We're thrilled to have you here
             </h1>
             <p className="text-base my-5 text-center sm:text-sm">
@@ -107,8 +107,7 @@ export const About = () => {
                 environment and support the local community. Join us in
                 celebrating the beauty of the land, the warmth of community, and
                 the tranquility of farm life. Experience the magic of the
-                countryside with [Farmstay Company Name]. Welcome to our farm
-                family!
+                countryside with Farmstay Manangel. Welcome to our farm family!
               </p>
             </div>
             <div className=" w-full">

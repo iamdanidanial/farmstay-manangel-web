@@ -72,7 +72,7 @@ export const Experience = () => {
       <div className="flex flex-col bg-gradient-to-b from-emerald-200 to-white h-auto w-auto">
         <div className="travigo-container">
           <div className="grid items-center place-items-center text-center mt-36 mb-12 md:mt-28 md:mb-6">
-            <h1 className="text-7xl font-bold lg:text-6xl md:text-5xl sm:text-4xl xsm:text-3xl text-black filter drop-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-green-700 to-purple-800 p-2">
+            <h1 className="text-7xl font-bold lg:text-6xl md:text-5xl sm:text-4xl xsm:text-3xl text-black filter drop-shadow-lg bg-clip-text text-transparent bg-orange-700 p-2">
               Discover and Embrace the Ultimate Experience
             </h1>
             <p className="text-base my-5 text-center sm:text-sm">

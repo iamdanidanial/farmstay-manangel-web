@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PriceCard = ({
   plan: { planicon, title, text, price, plancontent, buttonText },
@@ -49,9 +50,15 @@ const PriceCard = ({
           ))}
         </div>
         <div className="grid items-center justify-items-center mt-7">
-          <button type="button" className="button-emrald text-base">
-            {buttonText}
-          </button>
+          <Link
+            to="https://wa.me/+6285161012014"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button type="button" className="button-emrald text-base">
+              {buttonText}
+            </button>
+          </Link>
         </div>
       </div>
     </>
