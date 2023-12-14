@@ -12,7 +12,7 @@ const Advertise = ({ brands }) => {
           <p className="text-xl lg:text-sm text-gray-900"></p>
         </div>
       </div>
-      <div className="my-16 lg:my-7 w-9/12 lg:w-[85vw] m-auto flex items-center lg:flex-wrap justify-center xl:gap-7 overflow-x-scroll scroll-smooth scroll-hidden">
+      <div className="my-16 lg:my-7 w-9/12 lg:w-[85vw] m-auto flex items-center gap-4 lg:flex-wrap justify-center xl:gap-7 overflow-x-scroll scroll-smooth scroll-hidden">
         {brands?.map((val, i) => (
           <Link
             key={val.link}
@@ -24,7 +24,7 @@ const Advertise = ({ brands }) => {
               key={i}
               src={val.iconSrc}
               alt="brands/icon"
-              className="w-44 h-auto object-fill xl:w-38 lg:w-32 hover:scale-105 transition-all duration-300 cursor-pointer filter drop-shadow-md"
+              className="w-60 h-auto object-fill xl:w-48 lg:w-32 hover:scale-105 transition-all duration-300 cursor-pointer filter drop-shadow-md"
             />
           </Link>
         ))}
