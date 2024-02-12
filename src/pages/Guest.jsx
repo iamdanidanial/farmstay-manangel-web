@@ -5,8 +5,6 @@ export const Guest = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // Jika data JSON ada di server, gunakan axios untuk mengambilnya
-    // Contoh menggunakan data.json di proyek lokal
     axios.get('src/data/newcounty.json')
       .then(response => {
         setData(response.data);
