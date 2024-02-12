@@ -1,4 +1,4 @@
-[
+export const data = [
     {
       "name": {
         "common": "United Kingdom",

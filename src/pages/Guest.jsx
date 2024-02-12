@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
+import {data} from "../data/newcounty"
 export const Guest = () => {
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios.get('src/data/newcounty.json')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
 
 
   return (
@@ -33,7 +24,7 @@ export const Guest = () => {
           <div className="grid grid-cols-5 lg:grid-cols-1 gap-4 p-4">
             {data.map((item) => (
               <div
-                key={item.code}
+                key={item.cca2}
                 className="relative flex flex-col gap-2 rounded-lg"
               >
                 <img
