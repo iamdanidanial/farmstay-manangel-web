@@ -14,8 +14,6 @@ export const Guest = () => {
       });
   }, []);
 
-  const sortedData = data.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1);
-
 
   return (
     <>
@@ -33,7 +31,7 @@ export const Guest = () => {
           </div>
 
           <div className="grid grid-cols-5 lg:grid-cols-1 gap-4 p-4">
-            {sortedData.map((item) => (
+            {data.map((item) => (
               <div
                 key={item.code}
                 className="relative flex flex-col gap-2 rounded-lg"
