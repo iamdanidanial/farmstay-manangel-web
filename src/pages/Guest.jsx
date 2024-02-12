@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Pagination from "../components/atoms/Pagination";
 export const Guest = () => {
+
   const [data, setData] = useState([]);
-  const [page, setPage] = useState(0);
-  const [pages, setPages] = useState(0);
-  const [limit, setLimit] = useState(15);
-  const apiUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
-    getData();
-  }, [limit, page, pages]);
+    // Jika data JSON ada di server, gunakan axios untuk mengambilnya
+    // Contoh menggunakan data.json di proyek lokal
+    axios.get('src/data/newcounty.json')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
-  const getData = async () => {
-    const response = await axios.get(
-      `${apiUrl}/guest?page=${page}&limit=${limit}`
-    );
-    setData(response.data.data);
-    setPage(response.data.current_page);
-    setPages(response.data.total_page);
-  };
+  const sortedData = data.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1);
 
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
 
   return (
     <>
@@ -41,32 +35,32 @@ export const Guest = () => {
           </div>
 
           <div className="grid grid-cols-5 lg:grid-cols-1 gap-4 p-4">
-            {data.map((item) => (
+            {sortedData.map((item) => (
               <div
-                key={item.id}
-                className="relative flex flex-col gap-2 border border-green-400 rounded-lg"
+                key={item.code}
+                className="relative flex flex-col gap-2 rounded-lg"
               >
                 <img
-                  src={item.url}
-                  className="object-cover lg:object-fill w-full h-48 rounded-lg"
+                  src={item.flags.png}
+                  className="object-cover lg:object-fill w-full h-36 rounded-lg"
                 />
                 <div className="flex flex-col justify-center items-center">
-                  <p className="font-semibold text-xl">{item.fullname}</p>
+                  <p className="font-semibold text-xl">{item.name.common}</p>
                 </div>
-                <span className="absolute right-0 border text-white bg-green-700 rounded-bl-full px-4 text-center">
+                {/* <span className="absolute right-0 border text-white bg-green-700 rounded-bl-full px-4 text-center">
                   {item.country}
-                </span>
+                </span> */}
               </div>
             ))}
           </div>
-
+{/* 
           <div className="flex gap-2 mx-auto justify-end px-6 py-2">
             <Pagination
               currentPage={page}
               totalPages={pages}
               onPageChange={handlePageChange}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

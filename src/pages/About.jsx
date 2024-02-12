@@ -27,7 +27,7 @@ export const About = () => {
     {
       id: 3,
       title: "Care for Livestock",
-      description: "Collect Vegetables, Fruits and Fish",
+      description: "Collect Vegetables and Fruits",
       image: care,
     },
     {
