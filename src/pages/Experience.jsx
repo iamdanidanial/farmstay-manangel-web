@@ -11,7 +11,7 @@ import exterior3 from "../images/exterior3.jpg";
 import exterior4 from "../images/exterior4.jpg";
 
 export const Experience = () => {
-  const image = [makanan2, makanan3,makanan4, makanan1];
+  const image = [makanan2, makanan3, makanan4, makanan1];
   const secondImage = [exterior1, exterior2, exterior3, exterior4];
   const firstData = [
     {
@@ -96,7 +96,9 @@ export const Experience = () => {
             <div className="w-full">
               {firstData.map((item) => (
                 <div key={item.id} className="flex flex-col gap-2  p-4">
-                  <p className="text-base text-green-800">{item.title}</p>
+                  <p className="text-xl font-semibold text-green-800">
+                    {item.title}
+                  </p>
                   <p className="text-sm text-gray-500">{item.description}</p>
                 </div>
               ))}
