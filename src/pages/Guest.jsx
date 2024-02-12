@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import {data} from "../data/newcounty"
+import { data } from "../data/newcounty";
 export const Guest = () => {
-
-
+  const sortedData = data.sort((a, b) =>
+    a.name.common > b.name.common ? 1 : -1
+  );
 
   return (
     <>
@@ -21,15 +22,15 @@ export const Guest = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-5 lg:grid-cols-1 gap-4 p-4">
-            {data.map((item) => (
+          <div className="grid grid-cols-5 lg:grid-cols-2 gap-4 p-4">
+            {sortedData.map((item) => (
               <div
                 key={item.cca2}
                 className="relative flex flex-col gap-2 rounded-lg"
               >
                 <img
                   src={item.flags.png}
-                  className="object-cover lg:object-fill w-full h-36 rounded-lg"
+                  className="object-cover lg:object-fill w-full h-36 lg:h-24 rounded-lg"
                 />
                 <div className="flex flex-col justify-center items-center">
                   <p className="font-semibold text-xl">{item.name.common}</p>
@@ -40,7 +41,7 @@ export const Guest = () => {
               </div>
             ))}
           </div>
-{/* 
+          {/* 
           <div className="flex gap-2 mx-auto justify-end px-6 py-2">
             <Pagination
               currentPage={page}
