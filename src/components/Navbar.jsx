@@ -54,7 +54,7 @@ const Navbar = ({ navlinks }) => {
                 rel="noopener noreferrer"
               >
                 <button type="button" className="button-emrald px-7 text-base">
-                  Chat on WhatsApp
+                  Chat on What's Up
                 </button>
               </Link>
             </li>

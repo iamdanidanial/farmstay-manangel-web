@@ -14,6 +14,7 @@ import Pricings from "../components/Pricings";
 import Advertise from "../components/Advertise";
 import Newslatter from "../components/Newslatter";
 import Banner from "../components/Banner";
+import ReviewSection from "../components/Review";
 
 export const Dashboard = () => {
   return (
@@ -23,6 +24,7 @@ export const Dashboard = () => {
       <Explore title="Explore The Beauty of Cianjur" placesAPI={placesAPI} />
       <Pricings pricingapi={pricingapi} />
       <Advertise brands={brands} />
+      <ReviewSection />
       <Banner bannerAPI={bannerAPI} />
       <Newslatter />
     </>
