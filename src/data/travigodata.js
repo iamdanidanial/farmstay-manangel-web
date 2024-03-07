@@ -178,7 +178,7 @@ export const pricingapi = {
         },
         { iconbox: checkbox, text: "Gas stove & Barbecue equipment" },
       ],
-      buttonText: "Direct Booking on What's Up",
+      buttonText: "Direct Booking on WhatsApp",
     },
     {
       planicon: preminumicon,
@@ -212,7 +212,7 @@ export const pricingapi = {
         },
         { iconbox: checkbox, text: "Gas stove & Barbecue equipment" },
       ],
-      buttonText: "Direct Booking on What's Up",
+      buttonText: "Direct Booking on WhatsApp",
     },
   ],
 };
