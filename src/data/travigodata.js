@@ -57,7 +57,7 @@ export const navlinks = [
   { link: "Experience", id: "experience" },
   { link: "Our Guest", id: "guest" },
   { link: "Gallery", id: "gallery" },
-  // { link: "Contact", id: "contact" },
+  { link: "Review", id: "review" },
 ];
 
 export const hero = {

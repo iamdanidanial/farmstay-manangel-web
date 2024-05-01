@@ -24,7 +24,7 @@ export const Dashboard = () => {
       <Explore title="Explore The Beauty of Cianjur" placesAPI={placesAPI} />
       <Pricings pricingapi={pricingapi} />
       <Advertise brands={brands} />
-      <ReviewSection />
+      {/* <ReviewSection /> */}
       <Banner bannerAPI={bannerAPI} />
       <Newslatter />
     </>
