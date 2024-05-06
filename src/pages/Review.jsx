@@ -402,6 +402,31 @@ export const Review = () => {
             </div>
           </div>
           <div className="grid grid-cols-4 lg:grid-cols-1 gap-4 p-4">
+          {dataReview
+                
+                .map((review) => (
+                  <div class="flex items-center justify-center ">
+                  <div class="group h-96 w-96 [perspective:1000px]">
+                    <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                    <div className="relative h-96 w-full">
+  <img className="absolute inset-0 h-full w-full object-cover rounded-xl shadow-xl shadow-black/40" src={review.image} alt="" />
+  <p className="absolute inset-x-0 bottom-4 text-center text-2xl font-semibold text-white">{review.name}</p>
+</div>
+
+                      <div class="absolute inset-0 h-full w-full rounded-xl bg-gray-800 px-4 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                        <div class="flex min-h-full flex-col gap-2 justify-center">
+                          <h1 class="text-3xl font-bold">{review.name}</h1>
+                          <p class="text-base">{review.title}</p>
+                          <p class="text-xs">{review.review}</p>
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                ))}
+          
             {/* {data.map((item) => (
               <div
                 key={item.id}
@@ -417,6 +442,7 @@ export const Review = () => {
               </div>
             ))} */}
           </div>
+          
         </div>
       </div>
     </>
