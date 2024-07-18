@@ -9,7 +9,7 @@ const apiClient = axios.create({
     }
 });
 
-const getGuests = async (endpoint) => {
+const getData = async (endpoint) => {
     try {
         const response = await apiClient.get(endpoint);
         return response.data;
@@ -19,4 +19,4 @@ const getGuests = async (endpoint) => {
     }
 };
 
-export { getGuests };
+export { getData };

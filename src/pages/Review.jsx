@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getDataGuests, getDataReview } from "../service/apigetdata";
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 import farmstay from "../images/review1.svg";
 import photo from "../images/simonangie.jpg";
 import leonardo from "../images/guest/leonardo-switzerland.jpg"
@@ -13,8 +16,6 @@ import nico from "../images/guest/nico.webp"
 import sara from "../images/guest/sara.webp"
 import yakub from "../images/guest/yakub.webp"
 import karla from "../images/guest/karla.webp"
-
-
 
 export function PlatformBadge({ item }) {
   let className;
@@ -35,91 +36,8 @@ export function PlatformBadge({ item }) {
   return <p className={className}>{item}</p>;
 }
 
-const ReviewCard = ({ review }) => {
-  const [isFlipped, setIsFlipped] = React.useState(false);
-
-  return (
-    <div
-      className={`max-w-sm rounded overflow-hidden  ${
-        review.platform === "Booking.com"
-          ? "bg-gray-50"
-          : review.platform === "Airbnb.com"
-          ? "bg-gray-50"
-          : review.platform === "Google Maps"
-          ? "bg-gray-50"
-          : "bg-gray-50"
-      }  ${isFlipped ? "transform rotate-y-180" : ""}`}
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
-    >
-      <div className="flip-inner">
-        <div
-          className={`flip-front p-6 transition-transform ${
-            isFlipped ? "hidden" : "block"
-          }`}
-        >
-          <div className="flex items-center mb-4">
-            <img
-              src={review.image}
-              alt={review.name}
-              className="w-12 h-12 rounded-full mr-4"
-            />
-            <div>
-              <div className="font-bold text-xl">{review.name}</div>
-              <p className="text-gray-600">{review.country}</p>
-            </div>
-          </div>
-          <div>
-            <div className="font-bold text-xl mb-2">{review.title}</div>
-            <p className="text-gray-700 text-base line-clamp-3">
-              {review.review}
-            </p>
-            {/* <div className="mt-4 flex justify-between items-center">
-              <p className="text-gray-600">{review.platform}</p>
-            </div> */}
-          </div>
-        </div>
-        <div
-          className={`flip-back p-6 transition-transform bg-gray-200 ${
-            isFlipped ? "block" : "hidden"
-          }`}
-        >
-          <div className="flex items-center mb-4">
-            <img
-              src={review.image}
-              alt={review.name}
-              className="w-12 h-12 rounded-full mr-4"
-            />
-            <div>
-              <div className="font-bold text-xl">{review.name}</div>
-              <p className="text-gray-600">{review.country}</p>
-            </div>
-          </div>
-          <div>
-            <div className="font-bold text-xl mb-2">{review.title}</div>
-            <p className="text-gray-700 text-base">{review.review}</p>
-            {/* <div className="mt-4 flex justify-between items-center">
-              <p className="text-gray-600">{review.platform}</p>
-            </div> */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export const Review = () => {
   const dataReview = [
-    {
-      id: 1,
-      name: "Hanne",
-      title: "Fantastis!",
-      review:
-        "Ari, Uyung and Uyungs mom make you feel immediatly at home. We would say: if you are looking for authentic adventure, peace and quiet, learning about the culture of Indonesia and about farming, a good laugh, a warm family feeling: GO TO FARMSTAY. Beautiful and clean place to stay!",
-      image: ava_h,
-      country: "Belgia",
-      platform: "Google Maps",
-    },
     {
       id: 2,
       name: "Leandro",
@@ -128,65 +46,6 @@ export const Review = () => {
         "Wonderful stay for all lovers of nature, I absolutely recommend it! The guys of the staff built everything on their own, are super kind and it feels like being part of a family. They showed me the surrounding area with wonderful terraced paddy fields and banana plantations.",
       image: leonardo,
       country: "Switzerland",
-      platform: "Booking.com",
-    },
-    {
-      id: 3,
-      name: "Lieve",
-      title: "Beautifull, calming & heartwarming.",
-      review:
-        "Ari and Uyung made sure our stay was as pleasent as possible and showed us their home and their homevillage. The surroundings are very beautifull. Totally worth it!",
-      image: ava_l,
-      country: "Belanda",
-      platform: "Booking.com",
-    },
-    {
-      id: 4,
-      name: "Anna",
-      title: "Magico 💫",
-      review: "Ospitalità e gentilezza assoluta in questa splendida famiglia nel cuore della natura. Raccomandatissimo per chi vuole vivere esperienze autentiche nella realtà locale",
-      image: ava_a,
-      country: "Italia",
-      platform: "Booking.com",
-    },
-    {
-      id: 5,
-      name: "Jassim",
-      title: "Exceptional",
-      review:
-        "t's the right places for people who want to explore a real local cultural life, we just stayed two nights but we felt like we're staying with our family.",
-      image: ava_j,
-      country: "Bahrain",
-      platform: "Booking.com",
-    }, 
-    {
-      id: 6,
-      name: "Abbey",
-      title: "Incredible place and hosts",
-      review:
-        "This stay was so cozy, overlooking the hills, and so peaceful. We loved it",
-      image: ava_a,
-      country: "Italia",
-      platform: "Booking.com",
-    },
-    {
-      id: 7,
-      name: "Abdulrhman",
-      title: "Best experience in Indonesia so far",
-      review:
-        "- Staff were helpful with everything, Ari and Uyung are the best, Uyung mom she is the one preparing food and doing the cleaning. the way they treated me in there, I felt like it’s my own home, they did take me around the village, we also did some fun activities together, I won’t forget the good times I spent in the farmstay, thank you guys so much, - the views, it’s breathtaking, - the simple and quiet life in there that I enjoyed a lot , escaping from reality and from big noisy life in city’s 😅, - the friendly villagers",
-      image: ava_a,
-      country: "Saudi Arabia",
-      platform: "Booking.com",
-    },
-    {
-      id: 8,
-      name: "Julia",
-      title: "Exceptional",
-      review:
-        "Ari and Uyung are amazing hosts and make you feel at home from the very first moment. Mananggel the right place for anybody who wants to experience the rural life of Indonesia including its food culture. Big recommendations for this farmstay.",
-      image: ava_j,
-      country: "Austria",
       platform: "Booking.com",
     },
     {
@@ -219,48 +78,63 @@ export const Review = () => {
       country: "France",
       platform: "Airbnb.com",
     },
-    {
-      id: 13,
-      name: "Nico",
-      title: "We had two incredibly beautiful days",
-      review:
-        "We had two incredibly beautiful days at Ari's on his farm. With other guests, we went on excursions together and ate together with everyone in the evening. The accommodation is fantastic and in the middle of the nature. We thank you for the great experience :).",
-      image: nico,
-      country: "Germany",
-      platform: "Airbnb.com",
-    },
-    {
-      id: 14,
-      name: "Sára",
-      title: "the farm was fantastic!",
-      review:
-        "Our stay at the farm was fantastic! The place is beautiful and right in the nature. You just can't get enough of that view from the window! Ari and the guys are super kind and always helpful. Ari is also an amazing tour gide, he showed us the best places around the town.",
-      image: sara,
-      country: "Hungary",
-      platform: "Airbnb.com",
-    },
-    {
-      id: 15,
-      name: "Karla",
-      title: "Great to stay",
-      review:
-        "I had a great time at the Airbnb. It is surrounded by a lot of nature and a great landscape. The hosts are very helpful and showed me typical indonesian food in addition to the area. I highly recommend an overnight stay",
-      image: karla,
-      country: "Germany",
-      platform: "Airbnb.com",
-    },
-    {
-      id: 16,
-      name: "Jákup Á Rógvi J",
-      title: "100% Recomended",
-      review:
-        "This is a really nice place if you want to get know about the local Indonesian culture, the environment here is so beautiful. Ari is the best host ever, and his friends are really friendly too. I would 100% recommend",
-      image: yakub,
-      country: "Farue Island",
-      platform: "Airbnb.com",
-    },
-   
   ];
+
+
+  const [guests, setGuests] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [guestsPerPage] = useState(15);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedReview, setSelectedReview] = useState(null); // Atur jumlah tamu per halaman
+
+  useEffect(() => {
+    const fetchGuests = async () => {
+        try {
+            const data = await getDataReview();
+            console.log('Data received from API:', data);
+            if (Array.isArray(data.data)) {
+                setGuests(data.data);
+            } else {
+                throw new Error('Data format is not an array');
+            }
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchGuests();
+}, []);
+
+     // Hitung jumlah halaman
+     const totalPages = Math.ceil(guests.length / guestsPerPage);
+
+     // Ambil data tamu untuk halaman saat ini
+     const indexOfLastGuest = currentPage * guestsPerPage;
+     const indexOfFirstGuest = indexOfLastGuest - guestsPerPage;
+     const currentGuests = guests.slice(indexOfFirstGuest, indexOfLastGuest).sort((a, b) => {
+      return a.guest.name.localeCompare(b.guest.name);
+    });
+
+
+   // Fungsi untuk mengubah halaman
+   const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0); // Scroll ke atas saat halaman berubah
+};
+
+
+  if (loading) {
+      return <p>Loading...</p>;
+  }
+
+  if (error) {
+      return <p>Error: {error.message}</p>;
+  }
+
   return (
     <>
       <div className="flex flex-col bg-gradient-to-b from-emerald-200 to-white h-auto w-auto">
@@ -322,15 +196,6 @@ export const Review = () => {
                     <p className="line-clamp-5">{item.review}</p>
                     <p>{item.name}</p>
                     <PlatformBadge item={item.platform} />
-                    {/* {item.platform === "Booking.com" ? (
-                      <p className="text-base border border-blue-50 bg-blue-100 rounded-full text-blue-800 px-2 text-center">
-                        {item.platform}
-                      </p>
-                    ) : (
-                      <p className="text-base border border-red-50 bg-red-100 rounded-full text-red-800 px-2 text-center">
-                        {item.platform}
-                      </p>
-                    )} */}
                   </div>
                 ))}
               </div>
@@ -339,89 +204,31 @@ export const Review = () => {
         </div>
       </div>
 
-      <div className="flex flex-row">
-        <div className="travigo-container">
-          <div className="px-4 flex flex-col mx-auto justify-end items-end py-4 gap-4">
-            {/* left side */}
-            <div className="flex flex-col w-full mt-5">
-              <h1 className="md:text-2xl text-5xl font-bold text-headingcolor mb-5 text-blue-700">
-                Booking.com
-              </h1>
-              <div className="grid grid-cols-4 md:grid-cols-1 gap-2">
-                {dataReview.slice(0, 7).map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
+      <div className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 bg-gray-100 p-5">
+      {currentGuests.map((review) => (
+         <div key={review.id} className="bg-white shadow-md rounded-lg p-5 mb-5">
+         <div className="flex items-center">
+           <img
+            src={`https://api.farmstaymanangel.com/assets/guest/${review.guest.image}`}
+             alt={review.guest.name}
+             className="w-16 h-16 rounded-full mr-4"
+           />
+           <div>
+             <h2 className="text-xl font-semibold">{review.guest.name}</h2>
+             <div className="flex items-center mt-2">
+               <img src={review.guest.country.flags} alt={review.guest.country.name} className="w-6 h-4 mr-2"/>
+               <span>{review.guest.country.name}</span>
+             </div>
+           </div>
+         </div>
+         <div className="mt-5">
+           <h3 className="text-lg font-semibold">{review.title}</h3>
+           <p className="text-gray-700 line-clamp-5">{review.content}</p>
 
-                <a
-                  href="https://www.booking.com/hotel/id/farmstay-mananggel-kabupaten-cianjur1.id.html#tab-reviews"
-                  target="_blank"
-                  className="cursor-pointer border border-grey-400 text-center flex justify-center font-semibold items-center bg-cover bg-center relative rounded-md"
-                >
-                  <span className="absolute inset-0 z-10 bg-blue-100"></span>
-                  <span className="z-20 relative text-gray-800 text-lg">
-                    See all review from{" "}
-                    <p className="text-blue-500 text-2xl">BOOKING.COM</p>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col w-full mt-5">
-            <h1 className="md:text-2xl text-5xl font-bold text-headingcolor mb-5 text-red-500">
-              Airbnb.com
-            </h1>
-            <div className="grid grid-cols-4 md:grid-cols-1 gap-2">
-              {dataReview
-                .filter((review) => review.platform === "Airbnb.com")
-                .map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
-              <a
-                  href="https://www.airbnb.com/rooms/747463323767904056/reviews?adults=1&category_tag=Tag%3A8678&children=0&infants=0&check_in=2024-05-15&check_out=2024-05-20&source_impression_id=p3_1714720822_8NJOEtbG2hOozpcA&previous_page_section_name=1000&federated_search_id=4d8c5c53-e159-4d54-9a1e-9c70e3f586a1"
-                  target="_blank"
-                  className="cursor-pointer border border-grey-400 text-center flex justify-center font-semibold items-center bg-cover bg-center relative rounded-md"
-                >
-                  <span className="absolute inset-0 z-10 bg-red-100"></span>
-                  <span className="z-20 relative text-gray-800 text-lg">
-                    See all review from{" "}
-                    <p className="text-blue-500 text-2xl">AIRBNB.COM</p>
-                  </span>
-                </a>
-            </div>
-          </div>s
-          {/* <div className="flex flex-col w-full mt-5">
-            <h1 className="md:text-2xl text-5xl font-bold text-headingcolor mb-5 text-yellow-500">
-              Google Maps
-            </h1>
-            <div className="grid grid-cols-4 md:grid-cols-1 gap-2">
-              {dataReview
-                .filter((review) => review.platform === "Google Maps")
-                .map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
-            </div>
-          </div> */}
-          <div className="grid grid-cols-4 lg:grid-cols-1 gap-4 p-4">
-         
-          
-            {/* {data.map((item) => (
-              <div
-                key={item.id}
-                className="flex flex-col gap-6 border rounded-md border-green-800 p-2"
-              >
-                <img src={item.image} className="w-full object-fill h-36" />
-                <span>
-                  <p className="text-center font-semibold text-green-800">
-                    {item.title}
-                  </p>
-                  <p className="text-center">{item.description}</p>
-                </span>
-              </div>
-            ))} */}
-          </div>
-          
-        </div>
-      </div>
+         </div>
+         </div>
+      ))}
+    </div>
     </>
   );
 };

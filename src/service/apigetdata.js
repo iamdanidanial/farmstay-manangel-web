@@ -1,7 +1,11 @@
-import { getGuests } from "./apiservice";
+import { getData } from "./apiservice";
 
 const getDataGuests = async () => {
-    return await getGuests('/guest');
+    return await getData('/guest');
 };
 
-export { getDataGuests };
+const getDataReview = async () => {
+    return await getData('/review');
+};
+
+export { getDataGuests,getDataReview };
