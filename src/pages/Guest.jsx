@@ -1,11 +1,33 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { getDataGuests } from "../service/apigetdata";
 
-import { data } from "../data/newcounty";
 export const Guest = () => {
-  const sortedData = data.sort((a, b) =>
-    a.name.common > b.name.common ? 1 : -1
-  );
+  const [guests, setGuests] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchGuests = async () => {
+            try {
+                const data = await getDataGuests();
+                setGuests(data.data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchGuests();
+    }, []);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
 
   return (
     <>
@@ -22,26 +44,30 @@ export const Guest = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-5 lg:grid-cols-2 gap-4 p-4">
-            {sortedData.map((item) => (
+          <div className="grid grid-cols-5 lg:grid-cols-2 gap-4 my-4">
+            {guests.map((item) => (
               <div
-                key={item.cca2}
-                className="relative flex flex-col gap-2 rounded-lg"
+                key={item.id}
+                className="relative flex flex-col justify-center items-center gap-2 my-2"
               >
                 <img
-                  src={item.flags.png}
-                  className="object-cover lg:object-fill w-full h-36 lg:h-24 rounded-lg"
+                  src={`https://api.farmstaymanangel.com/assets/guest/${item.image}`} alt={item.name}
+                  className="object-cover lg:object-fill w-full h-72"
                 />
-                <div className="flex flex-col justify-center items-center">
-                  <p className="font-semibold text-xl">{item.name.common}</p>
+                <div className="flex flex-col justify-center items-center ">
+                  <p className="font-semibold text-xl">{item.name}</p>
                 </div>
-                {/* <span className="absolute right-0 border text-white bg-green-700 rounded-bl-full px-4 text-center">
-                  {item.country}
-                </span> */}
+                <span className="absolute top-0 right-0 text-white">
+                <img
+                                src={item.country.googlemaps}
+                                alt={item.country.name}
+                                className="w-12 h-8 border"
+                            />
+                </span>
               </div>
             ))}
           </div>
-          {/* 
+          {/*
           <div className="flex gap-2 mx-auto justify-end px-6 py-2">
             <Pagination
               currentPage={page}
