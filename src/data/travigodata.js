@@ -55,7 +55,7 @@ export const navlinks = [
   { link: "Home", id: "/" },
   { link: "About", id: "about" },
   { link: "Experience", id: "experience" },
-  { link: "Our Guest", id: "guest" },
+  { link: "Our Guests", id: "guest" },
   { link: "Gallery", id: "gallery" },
   { link: "Review", id: "review" },
 ];
