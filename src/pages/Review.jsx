@@ -85,7 +85,7 @@ export const Review = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [guestsPerPage] = useState(15);
+  const [guestsPerPage] = useState(16);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null); // Atur jumlah tamu per halaman
 
@@ -204,7 +204,7 @@ export const Review = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 bg-gray-100 p-5">
+      <div className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 bg-gray-50 p-5">
       {currentGuests.map((review) => (
          <div key={review.id} className="bg-white shadow-md rounded-lg p-5 mb-5">
          <div className="flex items-center">
@@ -224,11 +224,36 @@ export const Review = () => {
          <div className="mt-5">
            <h3 className="text-lg font-semibold">{review.title}</h3>
            <p className="text-gray-700 line-clamp-5">{review.content}</p>
-
          </div>
          </div>
       ))}
     </div>
+
+    <div className="flex justify-center my-4 space-x-2">
+                <button
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`px-3 py-1 mx-1 rounded-lg ${currentPage === 1 ? 'bg-gray-100 cursor-not-allowed' : 'bg-green-500 text-white hover:bg-green-700'}`}
+                >
+                    Previous
+                </button>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => paginate(index + 1)}
+                        className={`px-3 py-1 mx-1 rounded-lg ${currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`px-3 py-1 mx-1 rounded-lg ${currentPage === totalPages ? 'bg-gray-100 cursor-not-allowed' : 'bg-green-500 text-white hover:bg-green-700'}`}
+                >
+                    Next
+                </button>
+            </div>
     </>
   );
 };
