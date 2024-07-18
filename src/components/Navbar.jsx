@@ -46,18 +46,43 @@ const Navbar = ({ navlinks }) => {
               </li>
             ))}
           </ul>
-          <ul className="flex items-center lg:hidden">
-            <li>
+          <ul className="flex items-center gap-6 border bg-green-700 px-4 py-2 rounded-full lg:hidden">
+          <li>
+                    <Link to="https://www.facebook.com/farmstaymanangel/" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-facebook text-white text-2xl"></i>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="https://www.youtube.com/@farmstaymanangel" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-youtube text-white text-2xl"></i>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="https://www.tiktok.com/@farmstaymanangel" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-tiktok text-white text-2xl"></i>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="https://www.instagram.com/farmstaymanangel/" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-instagram text-white text-2xl"></i>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="https://wa.me/+6285161012014" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-whatsapp text-white  text-2xl"></i>
+                    </Link>
+                </li>
+            {/* <li>
               <Link
                 to="https://wa.me/+6285161012014"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button type="button" className="button-emrald px-7 text-base">
+                <button type="button" className="button-emrald text-base">
                   Chat on WhatsApp
                 </button>
               </Link>
-            </li>
+            </li> */}
           </ul>
           <ul className="hidden lg:flex items-center">
             <li>

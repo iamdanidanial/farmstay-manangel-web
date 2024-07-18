@@ -5,21 +5,43 @@ export const Guest = () => {
   const [guests, setGuests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [guestsPerPage] = useState(15); // Atur jumlah tamu per halaman
 
     useEffect(() => {
-        const fetchGuests = async () => {
-            try {
-                const data = await getDataGuests();
-                setGuests(data.data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
+      const fetchGuests = async () => {
+          try {
+              const data = await getDataGuests();
+              console.log('Data received from API:', data);
+              if (Array.isArray(data.data)) {
+                  setGuests(data.data);
+              } else {
+                  throw new Error('Data format is not an array');
+              }
+          } catch (error) {
+              setError(error);
+          } finally {
+              setLoading(false);
+          }
+      };
 
-        fetchGuests();
-    }, []);
+      fetchGuests();
+  }, []);
+
+       // Hitung jumlah halaman
+       const totalPages = Math.ceil(guests.length / guestsPerPage);
+
+       // Ambil data tamu untuk halaman saat ini
+       const indexOfLastGuest = currentPage * guestsPerPage;
+       const indexOfFirstGuest = indexOfLastGuest - guestsPerPage;
+       const currentGuests = guests.slice(indexOfFirstGuest, indexOfLastGuest);
+
+     // Fungsi untuk mengubah halaman
+     const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber);
+      window.scrollTo(0, 0); // Scroll ke atas saat halaman berubah
+  };
+
 
     if (loading) {
         return <p>Loading...</p>;
@@ -45,36 +67,53 @@ export const Guest = () => {
           </div>
 
           <div className="grid grid-cols-5 lg:grid-cols-2 gap-4 my-4">
-            {guests.map((item) => (
+            {currentGuests.map((item) => (
               <div
                 key={item.id}
                 className="relative flex flex-col justify-center items-center gap-2 my-2"
               >
                 <img
                   src={`https://api.farmstaymanangel.com/assets/guest/${item.image}`} alt={item.name}
-                  className="object-cover lg:object-fill w-full h-72"
+                  className="object-cover lg:object-fill w-full h-72 lg:h-48"
                 />
                 <div className="flex flex-col justify-center items-center ">
                   <p className="font-semibold text-xl">{item.name}</p>
                 </div>
                 <span className="absolute top-0 right-0 text-white">
                 <img
-                                src={item.country.googlemaps}
+                                src={item.country.flags}
                                 alt={item.country.name}
-                                className="w-12 h-8 border"
+                                className="w-16 h-10"
                             />
                 </span>
               </div>
             ))}
           </div>
-          {/*
-          <div className="flex gap-2 mx-auto justify-end px-6 py-2">
-            <Pagination
-              currentPage={page}
-              totalPages={pages}
-              onPageChange={handlePageChange}
-            />
-          </div> */}
+          <div className="flex justify-center my-4 space-x-2">
+                <button
+                    onClick={() => paginate(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`px-3 py-1 mx-1 rounded-lg ${currentPage === 1 ? 'bg-gray-100 cursor-not-allowed' : 'bg-green-500 text-white hover:bg-green-700'}`}
+                >
+                    Previous
+                </button>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        onClick={() => paginate(index + 1)}
+                        className={`px-3 py-1 mx-1 rounded-lg ${currentPage === index + 1 ? 'bg-green-500 text-white' : 'bg-gray-300 hover:bg-gray-400'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => paginate(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`px-3 py-1 mx-1 rounded-lg ${currentPage === totalPages ? 'bg-gray-100 cursor-not-allowed' : 'bg-green-500 text-white hover:bg-green-700'}`}
+                >
+                    Next
+                </button>
+            </div>
         </div>
       </div>
     </>
