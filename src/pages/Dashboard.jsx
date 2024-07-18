@@ -21,9 +21,9 @@ export const Dashboard = () => {
     <>
       <Hero hero={hero} />
       <Memory memory={memory} />
+      <Pricings pricingapi={pricingapi} brands={brands} />
+      {/* <Advertise brands={brands} /> */}
       <Explore title="Explore The Beauty of Cianjur" placesAPI={placesAPI} />
-      <Pricings pricingapi={pricingapi} />
-      <Advertise brands={brands} />
       {/* <ReviewSection /> */}
       <Banner bannerAPI={bannerAPI} />
       <Newslatter />

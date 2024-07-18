@@ -15,13 +15,13 @@ const Hero = ({ hero: { title, subtitle, btn1, btn2, text, img } }) => {
 
             <p className="text-base my-5 text-center sm:text-sm">{text}</p>
             <div className="flex items-center justify-center gap-11 sm:gap-3 sm:flex-col sm:w-full">
-              <button type="button" className="button-emrald">
-                {btn1}
-              </button>
-              <button type="button" className="button-light">
-                {btn2}
-              </button>
-            </div>
+            <a href="#pricing" className="button-emrald">
+              {btn1}
+            </a>
+            <a href="/guest" className="button-light">
+              {btn2}
+            </a>
+          </div>
           </div>
           <div className="flex items-center justify-center mb-11">
             <img

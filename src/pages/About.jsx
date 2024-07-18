@@ -1,66 +1,32 @@
-import React from "react";
-import mountain from "../images/logo.png";
-import gardening from "../images/gardening.svg";
-import outdoor from "../images/outdoor.svg";
-import tour from "../images/tour.svg";
-import game from "../images/game.svg";
-import care from "../images/care.svg";
-import animal from "../images/animal.svg";
-import stay from "../images/stay.svg";
-import enviromental from "../images/enviromental.svg";
+import React, { useEffect, useState } from "react";
 import farmstay from "../images/farm.png";
+import { getDataService } from "../service/apigetdata";
 
 export const About = () => {
-  const data = [
-    {
-      id: 2,
-      title: "Learn Agriculture",
-      description: "Discover planting, gardening, and organic farming",
-      image: gardening,
-    },
-    {
-      id: 1,
-      title: "Interacting with Animals",
-      description: "Feed, care for, and play with farm animals.",
-      image: animal,
-    },
-    {
-      id: 3,
-      title: "Care for Livestock",
-      description: "Collect Vegetables and Fruits",
-      image: care,
-    },
-    {
-      id: 4,
-      title: "Join Educational Tours",
-      description: "Explore farm life and practices",
-      image: tour,
-    },
-    {
-      id: 5,
-      title: "Enjoy Outdoor Activities",
-      description: "Walk, cycle, or picnic in the farm area",
-      image: outdoor,
-    },
-    {
-      id: 6,
-      title: "Learn Environmental Practices",
-      description: "Understand eco-friendly farming",
-      image: enviromental,
-    },
-    {
-      id: 7,
-      title: "Family Fun",
-      description: "Engage in games, picnics, and kid-friendly activities",
-      image: game,
-    },
-    {
-      id: 8,
-      title: "Experience Farm Stays",
-      description: "Stay, learn, and participate in farm activities",
-      image: stay,
-    },
-  ];
+
+  const [guests, setGuests] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+    useEffect(() => {
+      const fetchGuests = async () => {
+          try {
+              const data = await getDataService();
+              console.log('Data received from API:', data);
+              if (Array.isArray(data.data)) {
+                  setGuests(data.data);
+              } else {
+                  throw new Error('Data format is not an array');
+              }
+          } catch (error) {
+              setError(error);
+          } finally {
+              setLoading(false);
+          }
+      };
+
+      fetchGuests();
+  }, []);
   return (
     <>
       <div className="flex flex-col bg-gradient-to-b from-emerald-200 to-white h-auto w-auto">
@@ -141,12 +107,12 @@ export const About = () => {
             </div>
           </div>
           <div className="grid grid-cols-4 lg:grid-cols-1 gap-4 p-4">
-            {data.map((item) => (
+            {guests.map((item) => (
               <div
                 key={item.id}
                 className="flex flex-col gap-6 border rounded-md border-green-800 p-2"
               >
-                <img src={item.image} className="w-full object-fill h-36" />
+                <img src={`https://api.farmstaymanangel.com/assets/farmservice/${item.image}`} alt={item.name} className="w-full object-fill h-36" />
                 <span>
                   <p className="text-center font-semibold text-green-800">
                     {item.title}

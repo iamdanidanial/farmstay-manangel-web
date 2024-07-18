@@ -1,21 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getDataGuests, getDataReview } from "../service/apigetdata";
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import { getDataReview } from "../service/apigetdata";
 import farmstay from "../images/review1.svg";
-import photo from "../images/simonangie.jpg";
 import leonardo from "../images/guest/leonardo-switzerland.jpg"
-import ava_j from "../images/guest/ava-j.png"
-import ava_a from "../images/guest/ava-a.png"
-import ava_h from "../images/guest/ava-h.png"
-import ava_l from "../images/guest/ava-l.png"
-import hans from "../images/guest/hans.webp"
-import lucie from "../images/guest/lucie.webp"
-import melissa from "../images/guest/melissa.webp"
-import nico from "../images/guest/nico.webp"
-import sara from "../images/guest/sara.webp"
-import yakub from "../images/guest/yakub.webp"
-import karla from "../images/guest/karla.webp"
 
 export function PlatformBadge({ item }) {
   let className;
@@ -86,8 +72,6 @@ export const Review = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [guestsPerPage] = useState(16);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedReview, setSelectedReview] = useState(null); // Atur jumlah tamu per halaman
 
   useEffect(() => {
     const fetchGuests = async () => {

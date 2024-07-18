@@ -64,8 +64,8 @@ export const hero = {
   title: "Your Autentic",
   subtitle: "Farmstay Experiences, Await!",
   text: "Discover rustic charm and genuine hospitality at our village farmstay. Run by two passionate villagers, we invite you to experience our culture, traditions, and the beauty of nature. Join us for an authentic and enriching getaway that captures the essence of rural living.",
-  btn1: "See Our Guests",
-  btn2: "Read an Article",
+  btn1: "Check our room",
+  btn2: "Our Guest",
   img: dashboard,
 };
 

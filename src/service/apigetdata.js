@@ -8,4 +8,17 @@ const getDataReview = async () => {
     return await getData('/review');
 };
 
-export { getDataGuests,getDataReview };
+const getDataService = async () => {
+    return await getData('/service');
+};
+
+const getDataRoom = async () => {
+    return await getData('/room');
+};
+
+const getDataFacility = async () => {
+    return await getData('/facility');
+};
+
+
+export { getDataGuests,getDataReview, getDataService, getDataRoom, getDataFacility };
