@@ -28,7 +28,6 @@ export const Dashboard = () => {
       {/* <ReviewSection /> */}
       <Banner bannerAPI={bannerAPI} />
       <Newslatter />
-      <Activity/>
     </>
   );
 };
