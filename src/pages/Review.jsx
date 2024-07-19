@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { getDataReview } from "../service/apigetdata";
 import farmstay from "../images/review1.svg";
 import leonardo from "../images/guest/leonardo-switzerland.jpg"
+import hans from "../images/guest/hans.webp"
+import lucie from "../images/guest/lucie.webp"
+import melissa from "../images/guest/melissa.webp"
 
 export function PlatformBadge({ item }) {
   let className;

@@ -20,5 +20,9 @@ const getDataFacility = async () => {
     return await getData('/facility');
 };
 
+const getDataCountries = async () => {
+    return await getData('/countries');
+};
 
-export { getDataGuests,getDataReview, getDataService, getDataRoom, getDataFacility };
+
+export { getDataGuests,getDataReview, getDataService, getDataRoom, getDataFacility, getDataCountries };
