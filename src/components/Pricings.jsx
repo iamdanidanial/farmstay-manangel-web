@@ -16,7 +16,6 @@ const Pricings = ({ brands, pricingapi: { title, text, btn1, btn2, plans } }) =>
         try {
             const data = await getDataRoom();
             const data2 = await getDataFacility();
-            console.log('Data received from API:', data, data2);
             if (Array.isArray(data.data) && Array.isArray(data2.data)) {
                 setGuests(data.data);
                 setFacilities(data2.data);

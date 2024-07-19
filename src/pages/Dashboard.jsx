@@ -15,6 +15,7 @@ import Advertise from "../components/Advertise";
 import Newslatter from "../components/Newslatter";
 import Banner from "../components/Banner";
 import ReviewSection from "../components/Review";
+import Activity from "./Activity";
 
 export const Dashboard = () => {
   return (
@@ -27,6 +28,7 @@ export const Dashboard = () => {
       {/* <ReviewSection /> */}
       <Banner bannerAPI={bannerAPI} />
       <Newslatter />
+      <Activity/>
     </>
   );
 };

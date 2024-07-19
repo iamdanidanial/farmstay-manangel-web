@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getDataReview } from "../service/apigetdata";
 import farmstay from "../images/review1.svg";
-import leonardo from "../images/guest/leonardo-switzerland.jpg"
-import hans from "../images/guest/hans.webp"
-import lucie from "../images/guest/lucie.webp"
-import melissa from "../images/guest/melissa.webp"
+import leonardo from "../images/guest/leonardo-switzerland.jpg";
+import hans from "../images/guest/hans.webp";
+import lucie from "../images/guest/lucie.webp";
+import melissa from "../images/guest/melissa.webp";
+import google from "../images/goolemaps.png";
+import booking from "../images/booking.png";
+import airbnb from "../images/brand2.png";
 
 export function PlatformBadge({ item }) {
   let className;
@@ -80,7 +83,6 @@ export const Review = () => {
     const fetchGuests = async () => {
         try {
             const data = await getDataReview();
-            console.log('Data received from API:', data);
             if (Array.isArray(data.data)) {
                 setGuests(data.data);
             } else {
@@ -189,6 +191,20 @@ export const Review = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex flex-col items-center py-24 lg:py-12 mt-12 lg:mt-1 gap-4 ">
+        <p className="font-semibold text-5xl lg:text-2xl">Check All Review Here</p>
+          <div className="flex lg:flex-wrap justify-center items-center gap-12 lg:gap-2 max-w-7xl">
+              <a href="https://www.google.com/travel/search?q=google%20maps%20farmstay%20manangel&g2lb=4814050%2C4874190%2C4893075%2C4965990%2C4969803%2C10210221%2C72277293%2C72302247%2C72317059%2C72406588%2C72414906%2C72421566%2C72462234%2C72470899%2C72471280%2C72472051%2C72473841%2C72481459%2C72485658%2C72486593%2C72494250%2C72499705%2C72513513%2C72520081%2C72536387%2C72549171%2C72569093%2C72570850%2C72602734%2C72605013%2C72614662%2C72616120%2C72619927%2C72620306%2C72620962%2C72634629%2C72648289%2C72653660%2C72658032%2C72661846%2C72662543%2C72662669%2C72663438%2C72664003%2C72671093&hl=id-ID&gl=id&ssta=1&ts=CAEaRwopEicyJTB4MmU2ODUzMDFlOWVlZDUyYjoweGY0ODVjODk5NGJjYzUxZmQSGhIUCgcI6A8QCRgQEgcI6A8QCRgRGAEyAhAA&qs=CAEyFENnc0lfYU94M3BTVDhzTDBBUkFCOAJCCQn9UcxLmciF9A&ap=ugEHcmV2aWV3cw&ictx=111&ved=0CAAQ5JsGahcKEwiY8dfhkLKHAxUAAAAAHQAAAAAQDgs" target="_blank" className="rounded-md p-2">
+                <img src={google} alt="Google Maps" className="w-full h-24 lg:h-12"/>
+              </a>
+              <a href="https://www.booking.com/hotel/id/farmstay-mananggel-kabupaten-cianjur1.html?aid=318615&label=English_Indonesia_EN_ID_28546570705-G6blYurG1wv5nxy_NQuKzQS634117825086%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atidsa-209721654025%3Alp9128195%3Ali%3Adec%3Adm%3Aag28546570705%3Acmp340122265&sid=4219e182c0d4163a4f27a4a364b404ce&dest_id=-2697251;dest_type=city;dist=0;group_adults=2;group_children=0;hapos=1;hpos=1;no_rooms=1;req_adults=2;req_children=0;room1=A%2CA;sb_price_type=total;sr_order=popularity;srepoch=1721358787;srpvid=a66d169def96006c;type=total;ucfs=1&#tab-reviews" target="_blank" className="rounded-md p-2">
+                <img src={booking} alt="Booking.com" className="w-full h-24 lg:h-12"/>
+              </a>
+              <a href="https://www.airbnb.co.id/rooms/747463323767904056/reviews?source_impression_id=p3_1721359402_P3q3Pdnq2yUndNPR" target="_blank" className="rounded-md p-2">
+                <img src={airbnb} alt="Airbnb" className="w-full h-24 lg:h-12"/>
+              </a>
+          </div>
       </div>
 
       <div className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 bg-gray-50 p-5">

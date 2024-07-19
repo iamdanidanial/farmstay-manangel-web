@@ -10,6 +10,7 @@ import { Gallery } from "./pages/Gallery";
 import { Contact } from "./pages/Contact";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Review } from "./pages/Review";
+import Activity from "./pages/Activity";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/stories" element={<Activity />} />
       </Routes>
       <Footer footerAPI={footerAPI} />
     </>

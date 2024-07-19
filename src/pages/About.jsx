@@ -12,7 +12,6 @@ export const About = () => {
       const fetchGuests = async () => {
           try {
               const data = await getDataService();
-              console.log('Data received from API:', data);
               if (Array.isArray(data.data)) {
                   setGuests(data.data);
               } else {
